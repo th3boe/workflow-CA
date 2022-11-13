@@ -21,7 +21,7 @@ describe('workflow CA: Create post', () => {
   });
   it('Create a new post is WORKING', () => {
     cy.wait(1500);
-    cy.get('#footerActions').contains('New Post').click();
+    cy.get('#footerActions > a.btn').contains('New Post').click();
     cy.wait(500);
     cy.get('#postTitle').should('exist').type('This is an awesome title');
     cy.get('#postTags').should('exist').type('Cool Tag');
@@ -30,11 +30,11 @@ describe('workflow CA: Create post', () => {
       'The body is where you would write what was on your mind!'
     );
     cy.wait(1000);
-    cy.get('button[data-action="submit"]').click({ force: true });
+    cy.get('#postForm > div.col-12 > button').click({ force: true });
 
     // to delete this post, the button below has been added after a longer timer run.
 
     cy.wait(5000);
-    cy.get('button[data-action="delete"]:visible').click();
+    cy.get('div.post-actions > button').contains('Delete').click();
   });
 });
