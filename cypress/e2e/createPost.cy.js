@@ -22,7 +22,7 @@ describe('workflow CA: Create post', () => {
   it('Create a new post is WORKING', () => {
     cy.wait(1500);
     cy.get('a[href="./?view=post"]').click();
-    cy.wait(2000);
+    cy.wait(1000);
     cy.get('#postTitle').should('exist').type('This is an awesome title');
     cy.wait(300);
     cy.get('#postTags').should('exist').type('Cool Tag');
