@@ -30,7 +30,7 @@ describe('workflow CA: Create post', () => {
       'The body is where you would write what was on your mind!'
     );
     cy.wait(1000);
-    cy.get('button[data-action="submit"]').click();
+    cy.get('button[data-action="submit"]').click({ multiple: true });
 
     // to delete this post, the button below has been added after a longer timer run.
 
