@@ -21,11 +21,14 @@ describe('workflow CA: Create post', () => {
   });
   it('Create a new post is WORKING', () => {
     cy.wait(1500);
-    cy.get('#footerActions').contains('New Post').click();
-    cy.wait(500);
+    cy.get('a[href="./?view=post"]').click();
+    cy.wait(2000);
     cy.get('#postTitle').should('exist').type('This is an awesome title');
+    cy.wait(300);
     cy.get('#postTags').should('exist').type('Cool Tag');
+    cy.wait(300);
     cy.get('#postMedia').type('https://picsum.photos/200%27');
+    cy.wait(300);
     cy.get('#postBody').type(
       'The body is where you would write what was on your mind!'
     );
