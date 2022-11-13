@@ -34,7 +34,7 @@ describe('workflow CA: Create post', () => {
 
     // to delete this post, the button below has been added after a longer timer run.
 
-    cy.wait(5000);
-    cy.get('button[data-action="delete"]:visible').click();
+    // cy.wait(5000);
+    // cy.get('button[data-action="delete"]:visible').click();
   });
 });
