@@ -26,6 +26,9 @@ global.localStorage = new LocalStorageMock();
 
 describe('logout', () => {
   it('deletes the user token from localStorage when the logout function runs', () => {
+    localStorage.setItem('profile', 'test');
+    localStorage.setItem('token', 'test');
+
     logout();
     expect(localStorage.getItem('token')).toEqual(null);
     expect(localStorage.getItem('profile')).toEqual(null);

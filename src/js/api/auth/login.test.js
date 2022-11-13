@@ -39,7 +39,7 @@ function signinSuccess() {
     ok: true,
     status: 200,
     statusText: 'Passed authorization',
-    json: () => Promise.resolve({ ...user, TOKEN }),
+    json: () => Promise.resolve({ ...user, accessToken: TOKEN }),
   });
 }
 
@@ -55,9 +55,9 @@ describe('login', () => {
   it('will return a valid token when provided with valid authorization', async () => {
     global.fetch = jest.fn(() => signinSuccess());
     const profile = await login(EMAIL, PASSWORD);
-    expect(EMAIL).toMatch('@noroff.no');
-    expect(PASSWORD).toMatch('Pizza1234');
-    expect(profile.TOKEN).toEqual(TOKEN);
+    expect(profile).toEqual(user);
+
+    expect(localStorage.getItem('token')).toMatch(TOKEN);
   });
 
   it('will throw error when provided with invalid authorization', async () => {
