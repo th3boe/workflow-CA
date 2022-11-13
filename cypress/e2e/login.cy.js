@@ -29,6 +29,8 @@ describe('workflow CA: Authorized', () => {
       .type(`Pizza1234{enter}`);
     cy.wait(2000);
     cy.url().should('include', 'profile');
+    cy.wait(500);
+    cy.then(() => expect(localStorage.getItem('token')).to.not.be.null);
   });
 });
 
