@@ -3,34 +3,21 @@ describe('workflow CA: Create post', () => {
     cy.visit('/');
     cy.clearLocalStorage();
     cy.wait(1000);
-    // cy.get('#registerForm > div.modal-footer > button')
-    //   .contains('Login')
-    //   .click();
-    // cy.wait(500);
-    // cy.get(
-    //   '#loginForm > div.modal-body > div.form-floating > input[type=email]'
-    // )
-    //   .should('exist')
-    //   .type('boepizza@noroff.no');
-    // cy.get(
-    //   '#loginForm > div.modal-body > div.form-floating > input[type=password]'
-    // )
-    //   .should('exist')
-    //   .type('Pizza1234');
-    // cy.get('#loginForm > div.modal-footer > button').contains('Login').click();
-    cy.get('.btn-close:visible').click();
+    cy.get('#registerForm > div.modal-footer > button')
+      .contains('Login')
+      .click();
     cy.wait(500);
-    //gets the login button in header
-    cy.get("button[data-auth='login']:visible").click();
-    cy.wait(500);
-    cy.get("input[type='email']:visible")
+    cy.get(
+      '#loginForm > div.modal-body > div.form-floating > input[type=email]'
+    )
       .should('exist')
-      .type(`boepizza@noroff.no`);
-    cy.get("input[type='password']:visible")
+      .type('boepizza@noroff.no');
+    cy.get(
+      '#loginForm > div.modal-body > div.form-floating > input[type=password]'
+    )
       .should('exist')
-      .type(`Pizza1234{enter}`);
-    cy.wait(2000);
-    cy.url().should('include', 'profile');
+      .type('Pizza1234');
+    cy.get('#loginForm > div.modal-footer > button').contains('Login').click();
   });
   it('Create a new post is WORKING', () => {
     cy.wait(1500);
@@ -43,10 +30,7 @@ describe('workflow CA: Create post', () => {
       'The body is where you would write what was on your mind!'
     );
     cy.wait(1000);
-    cy.get('button[data-action="submit"]').click(
-      { multiple: true },
-      { force: true }
-    );
+    cy.get('button[data-action="submit"]').click({ force: true });
 
     // to delete this post, the button below has been added after a longer timer run.
 
